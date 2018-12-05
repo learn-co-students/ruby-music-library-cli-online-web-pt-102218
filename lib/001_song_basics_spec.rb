@@ -1,3 +1,5 @@
+require 'pry'
+
 class Song
   attr_accessor :name
 
@@ -17,6 +19,11 @@ class Song
 
   def self.destroy_all
     @@all = []
+  end
+
+  def self.create(name)
+    self.new(name).save
+    self
   end
 
 end
