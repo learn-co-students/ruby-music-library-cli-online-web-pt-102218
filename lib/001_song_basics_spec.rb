@@ -1,11 +1,11 @@
 require 'pry'
 
 class Song
-  attr_accessor :name
+  attr_accessor :name, :artist
 
   @@all = []
 
-  def initialize(name)
+  def initialize(name, artist= @artist)
     @name = name
   end
 
@@ -24,6 +24,10 @@ class Song
   def self.create(name)
     self.new(name).save
     self
+  end
+
+  def artist
+    @artist.name
   end
 
 end
