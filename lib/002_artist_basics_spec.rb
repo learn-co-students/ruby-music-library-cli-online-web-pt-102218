@@ -32,7 +32,11 @@ class Artist
   def add_song(song)
     if song.artist == nil
       song.artist = self
-      self.songs << song
+    end
+    songs.each do |item|
+      if item != song
+        self.songs << song
+      end
     end
   end
 
