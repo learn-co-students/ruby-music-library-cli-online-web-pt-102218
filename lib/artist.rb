@@ -33,11 +33,7 @@ class Artist
     if song.artist == nil
       song.artist = self
     end
-    songs.each do |item|
-      if item != song
-        self.songs << song
-      end
-    end
+    self.songs << song if !songs.include?(song)
   end
 
 end
