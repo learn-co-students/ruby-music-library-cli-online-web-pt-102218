@@ -5,8 +5,9 @@ class Song
 
   @@all = []
 
-  def initialize(name, artist= @artist)
+  def initialize(name, artist= nil)
     @name = name
+    @artist = artist
   end
 
   def save
