@@ -2,6 +2,8 @@ require 'pry'
 
 class Genre
   attr_accessor :name
+  extend Concerns::Findable
+
 
   @@all = []
 
