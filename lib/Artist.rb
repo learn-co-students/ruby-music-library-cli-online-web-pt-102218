@@ -1,6 +1,10 @@
 require 'pry'
+require_relative '../lib/Concerns.rb'
+
 
 class Artist
+  
+  extend Concerns::Findable
   
   attr_accessor :name, :songs
   
