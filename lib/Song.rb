@@ -8,7 +8,6 @@ class Song
     @name = name
     self.artist = artist if artist
     self.genre = genre if genre
-    @@all << self
   end
   
   def genre= (genre)
@@ -18,6 +17,19 @@ class Song
   
   def genre
     @genre
+  end
+  
+  def self.find_by_name(name)
+    self.all.detect { |s| s.name == name}
+  end
+  
+  def self.find_or_create_by_name(name)
+    if self.find_by_name(name)
+      self.find_by_name(name)
+      #returns the instance of the song
+    else
+      self.create(name)
+    end
   end
   
   def artist= (artist)
