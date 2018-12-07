@@ -36,4 +36,10 @@ class Artist
     self.songs << song if !songs.include?(song)
   end
 
+  def genres
+    self.songs.collect.uniq? do |tune|
+      tune.genre
+    end
+  end
+
 end
