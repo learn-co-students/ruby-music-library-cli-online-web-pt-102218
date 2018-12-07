@@ -1,3 +1,4 @@
+require 'pry'
 class Genre
 
   attr_accessor :name, :songs
@@ -30,6 +31,12 @@ def self.create(name)
   genre = Genre.new(name)
   @@all << genre
   genre
+end
+
+def artists
+  songs.map do |song|
+    song.artist
+  end.uniq
 end
 
 end
