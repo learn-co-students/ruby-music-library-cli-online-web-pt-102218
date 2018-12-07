@@ -35,12 +35,26 @@ class Song
   end
 
   def self.create(name)
-    self.new(name).save
-    self
+    new_song = Song.new(name)
+    new_song.save
+    new_song
   end
 
   def artist
     @artist
   end
+
+  def self.find_by_name(name)
+   @@all.find do |tune|
+     if tune.name == name
+     tune
+    end
+   end
+  end
+
+  def self.find_or_create_by_name(name)
+    self.find_by_name(name) || self.create(name)
+  end
+
 
 end

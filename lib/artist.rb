@@ -37,9 +37,11 @@ class Artist
   end
 
   def genres
-    self.songs.collect.uniq? do |tune|
-      tune.genre
-    end
+    self.songs.collect do |tune|
+        tune.genre
+    end.uniq
   end
+
+
 
 end

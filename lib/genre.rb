@@ -1,3 +1,5 @@
+require 'pry'
+
 class Genre
   attr_accessor :name
 
@@ -28,5 +30,11 @@ class Genre
     self.new(name).save
     self
   end
+
+  def artists
+    self.songs.collect do |item|
+      item.artist
+  end.uniq
+end
 
 end
