@@ -1,3 +1,5 @@
+require_relative '../lib/MusicImporter.rb'
+
 class Song
   
   attr_accessor :name
@@ -20,16 +22,21 @@ class Song
   end
   
   def self.find_by_name(name)
-    self.all.detect { |s| s.name == name}
+    self.all.detect {|s| s.name == name}
   end
   
   def self.find_or_create_by_name(name)
     if self.find_by_name(name)
       self.find_by_name(name)
-      #returns the instance of the song
-    else
+    else 
       self.create(name)
     end
+  end
+  
+  def self.new_from_filename(filename)
+    name = filename.split(" - ")[1]
+    new_song = Song.new(name)
+    
   end
   
   def artist= (artist)
