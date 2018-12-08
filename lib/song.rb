@@ -2,6 +2,7 @@ require 'pry'
 class   Song
 
 attr_accessor :name, :artist, :genre
+extend Concerns::Findable
 
 @@all = []
 
@@ -40,12 +41,12 @@ attr_accessor :name, :artist, :genre
     song = Song.new(name)
   end
 
-  def self.find_by_name(name)
-
-    @@all.detect {|song| song.name == name }
-    #find will return nil of the name isn't in @@all
-
-  end
+  # def self.find_by_name(name)
+  #
+  #   @@all.detect {|song| song.name == name }
+  #   #find will return nil of the name isn't in @@all
+  #
+  # end
 
   def self.find_or_create_by_name(name)
     self.find_by_name(name) || self.create(name)  #if find_by_name(name) returns nil, the right side is executed
