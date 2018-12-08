@@ -41,14 +41,20 @@ extend Concerns::Findable
     song = Song.new(name)
   end
 
-  # def self.find_by_name(name)
-  #
-  #   @@all.detect {|song| song.name == name }
-  #   #find will return nil of the name isn't in @@all
-  #
-  # end
+  def self.new_from_filename(file)
 
-  def self.find_or_create_by_name(name)
-    self.find_by_name(name) || self.create(name)  #if find_by_name(name) returns nil, the right side is executed
+    artist_name = file.split[0]
+    song_name = file.split(" - ")[1]
+    genre_name = file.split(' - ')[2].chomp(".mp3")
+    song_object = Song.new(song_name)
+    song_object.artist = Artist.find_or_create_by_name(artist_name)
+    song_object.genre = Genre.find_or_create_by_name(genre_name)
+    song_object
+
+
   end
+
+  # def self.find_or_create_by_name(name)
+  #   self.find_by_name(name) || self.create(name)  #if find_by_name(name) returns nil, the right side is executed
+  # end
 end
