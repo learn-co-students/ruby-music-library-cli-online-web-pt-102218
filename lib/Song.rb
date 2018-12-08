@@ -1,4 +1,4 @@
-require_relative '../lib/MusicImporter.rb'
+
 
 class Song
   
@@ -34,9 +34,12 @@ class Song
   end
   
   def self.new_from_filename(filename)
-    name = filename.split(" - ")[1]
-    new_song = Song.new(name)
-    
+    #binding.pry
+    artist = self.create(filename.split(" - ")[0])
+    song = filename.split(" - ")[1]
+    new_song = self.new(song)
+    new_song.artist = Artist.find_or_create_by_name(artist)
+    new_song.save
   end
   
   def artist= (artist)

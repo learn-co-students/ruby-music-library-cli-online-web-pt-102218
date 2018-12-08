@@ -12,5 +12,8 @@ class MusicImporter
     end
   end
   
+    def import
+    files.map{ |filename| Song.new_from_filename(filename) }
+    end
   
 end
