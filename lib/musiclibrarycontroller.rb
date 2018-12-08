@@ -21,12 +21,26 @@ class MusicLibraryController
     input = gets.chomp
 
     while(input != "exit")
+        if input == "list songs"
+          list_songs
+        elsif input == "list artists"
+          list_artists
+        elsif input == "list genres"
+          list_genres
+        elsif input == "list artist"
+          list_songs_by_artist
+        elsif input == "list genre"
+          list_songs_by_genre
+        elsif input == "play song"
+          play_song
+        end
         input = gets.chomp
     end
 
   end
 
   def list_songs
+    # binding.pry
     i = 1
     sorted_song_list = Song.all.sort_by {|song| song.name}
     sorted_song_list = sorted_song_list.uniq
@@ -57,24 +71,52 @@ class MusicLibraryController
   end
 
   def list_songs_by_artist
-    # Song.create_from_filename("Real Estate - Wonder Years - dream pop.mp3")
-      puts "Please enter the name of an artist:"
-      artist_name = gets.chomp
-
-      i = 1
-      artist = Artist.find_by_name(artist_name)
+    puts "Please enter the name of an artist:"
+    artist_name = gets.chomp
+    # binding.pry
+    i = 1
+    artist = Artist.find_by_name(artist_name)
+    # binding.pry
+    if artist
       # binding.pry
-      if artist
-        # binding.pry
-        sorted_songs_by_artist = artist.songs.sort_by {|song| song.name}
-        # sorted_songs_by_artist_list = sorted_songs_by_artist_list.uniq
-        sorted_songs_by_artist.each do |song|
-          puts "#{i}. #{song.name} - #{song.genre.name}"
-          i += 1
-        end
+      sorted_songs_by_artist = artist.songs.sort_by {|song| song.name}
+      # sorted_songs_by_artist_list = sorted_songs_by_artist_list.uniq
+      sorted_songs_by_artist.each do |song|
+        puts "#{i}. #{song.name} - #{song.genre.name}"
+        i += 1
       end
+    end
   end
 
+  def list_songs_by_genre
+    puts "Please enter the name of a genre:"
+    genre_name = gets.chomp
+    i = 1
+    genre = Genre.find_by_name(genre_name)
+    # binding.pry
+    if genre
+      # binding.pry
+      sorted_songs_by_genre = genre.songs.sort_by {|song| song.name}
+      # sorted_songs_by_artist_list = sorted_songs_by_artist_list.uniq
+      sorted_songs_by_genre.each do |song|
+        puts "#{i}. #{song.artist.name} - #{song.name}"
+        i += 1
+      end
+    end
+  end
+
+  def play_song
+    # list_songs
+    puts "Which song number would you like to play?"
+    song_index = gets.chomp.to_i - 1
+
+    if song_index >= 0 && song_index < Song.all.uniq.count
+      sorted_song_list = Song.all.sort_by {|song| song.name}
+      sorted_song_list = sorted_song_list.uniq
+      song = sorted_song_list[song_index]
+      puts "Playing #{song.name} by #{song.artist.name}"
+    end
+  end
 end
 
 # library = MusicLibraryController.new("../db/mp3s")
