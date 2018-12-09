@@ -54,8 +54,10 @@ extend Concerns::Findable
 
   end
   def self.create_from_filename(filename)
+    self.new_from_filename(filename).save
 
   # def self.find_or_create_by_name(name)
   #   self.find_by_name(name) || self.create(name)  #if find_by_name(name) returns nil, the right side is executed
   # end
+end
 end

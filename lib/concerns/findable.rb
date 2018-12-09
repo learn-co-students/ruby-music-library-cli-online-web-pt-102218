@@ -11,7 +11,9 @@ module Concerns::Findable
     find_by_name(name) || create(name)  #if find_by_name(name) returns nil, the right side is executed
   end
 
-
+  def find_or_create_by_file(name)
+    self.find_by_name(name) || self.create(name)  #if find_by_name(name) returns nil, the right side is executed
+  end
 
 
 end
