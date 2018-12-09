@@ -12,7 +12,6 @@ extend Concerns::Findable
     if artist != nil
       self.artist = artist
     end
-    @@all << self
   end
 
   def genre=(genre)
@@ -39,11 +38,13 @@ extend Concerns::Findable
 
   def self.create(name)
     song = Song.new(name)
+    @@all << song
+    song
   end
 
   def self.new_from_filename(file)
 
-    artist_name = file.split[0]
+    artist_name = file.split(" - ")[0]
     song_name = file.split(" - ")[1]
     genre_name = file.split(' - ')[2].chomp(".mp3")
     song_object = Song.new(song_name)

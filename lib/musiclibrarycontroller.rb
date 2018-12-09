@@ -21,12 +21,23 @@ class MusicLibraryController
       user_input = gets.strip
      end
     end
+    def list_songs
 
-      def list_songs
-        binding.pry
-        Song.all.sort_by {|song| song.name}.each.with_index(1) do |song, index|
+      Song.all.sort_by {|song| song.name}.each.with_index(1) do |song, index|
           puts "#{index}. #{song.artist.name} - #{song.name} - #{song.genre.name}"
 
         end
-      end
+  end
+
+
+    def list_artists
+
+          songs_sorted_by_artist = Artist.all.sort_by.collect do |artist|
+              artist.name
+
+          songs_sorted_by_artist.each.with_index(1) do |artist,index|
+            puts "#{index}. #{artist.name}"
     end
+          end
+          end
+end
