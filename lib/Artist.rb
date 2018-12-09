@@ -1,5 +1,5 @@
 require 'pry'
-require_relative '../lib/Concerns.rb'
+
 
 
 class Artist

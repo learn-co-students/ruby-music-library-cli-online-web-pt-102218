@@ -1,11 +1,6 @@
-require_relative '../lib/MusicImporter.rb'
-
 class MusicLibraryController
   
-  attr_accessor :path
-  
   def initialize(path = './db/mp3s')
-    @path = path
     music_importer = MusicImporter.new(path)
     music_importer.import
   end
@@ -24,6 +19,10 @@ class MusicLibraryController
     puts "To list all of the songs of a particular genre, enter 'list genre'."
     puts "To play a song, enter 'play song'."
     puts "To quit, type 'exit'."
+  end
+  
+  def list_songs
+    #does the cli and does the puts and list the songs when it tells the interface to do something
   end
   
 end
