@@ -1,4 +1,4 @@
-
+require_relative '../lib/MusicImporter.rb'
 
 class Song
   
@@ -34,13 +34,21 @@ class Song
   end
   
   def self.new_from_filename(filename)
-    #binding.pry
-    artist = self.create(filename.split(" - ")[0])
-    song = filename.split(" - ")[1]
-    new_song = self.new(song)
-    new_song.artist = Artist.find_or_create_by_name(artist)
+    #
+    artist_name = (filename.split(" - ")[0])
+    name = filename.split(" - ")[1]
+    genre_name1 = filename.split(" - ")[2]
+    genre_name= genre_name1.split(".")[0]
+    new_song = self.new(name)
+    new_song.artist = Artist.find_or_create_by_name(artist_name)
+    new_song.genre = Genre.find_or_create_by_name(genre_name)
     new_song.save
   end
+  
+  def self.create_from_filename(filename)
+    self.new_from_filename(filename)
+  end
+  
   
   def artist= (artist)
     @artist = artist
@@ -61,12 +69,12 @@ class Song
   
   def save
     @@all << self
+    self
   end
   
   def self.create(name)
-    name = self.new(name)
-    name.save
-    name
+    new_song = self.new(name)
+    new_song.save
   end
   
 end
