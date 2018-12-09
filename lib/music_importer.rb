@@ -2,19 +2,15 @@
 class MusicImporter
   require 'pry'
 
+  attr_accessor :path
+
   def initialize(path)
     @path = path
   end
 
-  def path
-    @path
-  end
 
   def files
-    @filenames = Dir.glob('./spec/fixtures/mp3s/*')
-    @filenames.map do |file|
-    file.split("./spec/fixtures/mp3s/")[1]
-    end
+    Dir.entries(@path).select {|filename| filename.include?('mp3')}    
   end
 
   def import
