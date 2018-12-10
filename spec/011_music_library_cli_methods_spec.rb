@@ -56,7 +56,7 @@ describe "MusicLibraryController - CLI Methods" do
 
       music_library_controller.list_genres
     end
-
+    
     it "is not hard-coded" do
       expect($stdout).to receive(:puts).with("1. folk")
       expect($stdout).to receive(:puts).with("2. indie")
