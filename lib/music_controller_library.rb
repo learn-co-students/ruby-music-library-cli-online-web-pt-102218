@@ -19,8 +19,18 @@ class MusicLibraryController
     puts "To play a song, enter 'play song'."
     puts "To quit, type 'exit'."
     puts "What would you like to do?"
-    input = gets
-      if input == 'exit'
+    input = gets.strip
+      if input == 'list songs'
+        list_songs
+      elsif input == 'list genres'
+        list_genres
+      elsif input == 'list artists'
+        list_artists
+      elsif input == 'list artist'
+        list_songs_by_artist
+      elsif input == 'list genre'
+        list_songs_by_genre
+      elsif input == 'exit'
         return
       else call
       end
@@ -70,6 +80,14 @@ class MusicLibraryController
       puts "#{index+ 1}. #{genre.artist.name} - #{genre.name}"
       end
     end
+  end
+
+  def play_song
+    puts "Which song number would you like to play?"
+    input = gets.strip.to_i
+
+
+
   end
 
 
