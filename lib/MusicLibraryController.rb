@@ -8,19 +8,28 @@ class MusicLibraryController
   end
   
   def call
+    input = ""
+    while input != "exit!"
     puts "Welcome to your music library!"
     puts "What would you like to do?"
-    gets.chomp!
-    puts "To list all of your songs, enter 'list songs'."
-    gets.chomp!
-    puts "To list all of the artists in your library, enter 'list artists'."
-    gets.chomp!
-    puts "To list all of the genres in your library, enter 'list genres'."
-    gets.chomp!
-    puts "To list all of the songs by a particular artist, enter 'list artist'."
-    puts "To list all of the songs of a particular genre, enter 'list genre'."
-    puts "To play a song, enter 'play song'."
-    puts "To quit, type 'exit'."
+    input = gets.strip
+    case input
+     when "list songs"
+      songs
+     when "list artists"
+      artists
+     when "list genres"
+      genres
+     when "list artist"
+       list_artists
+     when "list genre"
+       list_genres
+       when "list song"
+         list_songs
+      when "play song"
+        play_song
+      end
+    end
   end
   
   def list_songs
@@ -76,14 +85,14 @@ end
     end
   end
   
-  def play_song # plays matching song from list of output by song list
-    puts "Which song number would you like to play?"
-    # list_of_songs = Song.all.sort_by {|song|song.name}
-    input = gets.strip.to_i
-     if input.between?(1,Song.all.length)
-       song = list_songs[input]
+  def play_song
+  puts "Which song number would you like to play?"
+  user = gets.strip
+    if user.to_i.between?(1, Song.all.length)
+      song = Song.all.uniq.sort_by {|s| s.name} [user.to_i - 1]
       puts "Playing #{song.name} by #{song.artist.name}"
     end
   end
+	
   
 end
