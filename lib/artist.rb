@@ -2,13 +2,13 @@ require 'pry'
 class Artist
 extend Concerns::Findable
 
-  attr_accessor :name, :save, :songs
+  attr_accessor :name, :songs
 
   @@all = []
 def initialize(name)
   @name = name
   @songs = []
-  @@all << self
+  # @@all << self
 end
 
 def self.all
@@ -19,13 +19,13 @@ def self.destroy_all
   @@all = []
 end
 
-def self.save
+def save
   @@all << self
 end
 
 def self.create(name)
   artist = Artist.new(name)
-  @@all << artist
+   artist.save
   artist
 end
 

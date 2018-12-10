@@ -8,7 +8,7 @@ extend Concerns::Findable
 def initialize(name)
   @name = name
   @songs = []
-  @@all << self
+  # @@all << self
 end
 
 def songs
@@ -29,7 +29,7 @@ end
 
 def self.create(name)
   genre = Genre.new(name)
-  @@all << genre
+  genre.save
   genre
 end
 

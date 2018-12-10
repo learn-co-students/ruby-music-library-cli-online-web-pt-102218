@@ -38,7 +38,7 @@ extend Concerns::Findable
 
   def self.create(name)
     song = Song.new(name)
-    @@all << song
+    song.save
     song
   end
 
