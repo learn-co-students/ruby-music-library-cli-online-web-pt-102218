@@ -81,7 +81,7 @@ end
     # list_of_songs = Song.all.sort_by {|song|song.name}
     input = gets.strip.to_i
      if input.between?(1,Song.all.length)
-       song = list_songs
+       song = list_songs[input]
       puts "Playing #{song.name} by #{song.artist.name}"
     end
   end
