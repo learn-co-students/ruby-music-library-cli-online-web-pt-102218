@@ -17,7 +17,7 @@ describe "Associations — Song and Genre:" do
         expect(genre.songs).to eq([])
 
         genre.songs << song
-
+        
         expect(genre.songs).to include(song)
       end
     end

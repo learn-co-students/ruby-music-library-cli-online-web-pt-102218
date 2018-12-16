@@ -91,7 +91,7 @@ Once the basic module structure is good to go, it's time to code our two class m
 Create a `MusicImporter` class that works with your `Song`, `Genre`, and `Artist` objects to import a directory of MP3 files. This class will have the following methods:
   * `#initialize` accepts a file path to a directory of MP3 files.
   * `#files` returns all of the imported filenames.
-  * `.import` imports all of the files from the library, instantiating a new `Song` object for each file.
+  * `#import` imports all of the files from the library, instantiating a new `Song` object for each file.
 
 In addition, add the following pair of methods to your `Song` class:
   * `.new_from_filename`, which instantiates a new `Song` object based on a provided filename.

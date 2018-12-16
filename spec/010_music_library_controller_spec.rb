@@ -43,7 +43,7 @@ describe "MusicLibraryController" do
       expect($stdout).to receive(:puts).with("To play a song, enter 'play song'.")
       expect($stdout).to receive(:puts).with("To quit, type 'exit'.")
       expect($stdout).to receive(:puts).with("What would you like to do?")
-
+      # binding.pry
       music_library_controller.call
     end
 
