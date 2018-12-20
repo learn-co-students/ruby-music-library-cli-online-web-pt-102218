@@ -55,19 +55,18 @@ def self.find_or_create_by_name(name)
 end 
   
 def self.new_from_filename(filename)
-  @mp3 = []
-  song = filename.split(/[.-]/)
+  song = filename.split(".")
   song.pop 
-  song.map do |i| 
-    @mp3 << i.strip 
-  end 
+  new_song = song.join
+  @mp3 = new_song.split(" - ")
   artist_name = @mp3[0]
   artist = Artist.find_or_create_by_name(artist_name)
   genre_name = @mp3[2] 
   genre = Genre.find_or_create_by_name(genre_name)
   new_song = Song.new(@mp3[1], artist, genre)
   new_song
-end 
+end
+
 
 def Song.create_from_filename(filename)
   @@all << self.new_from_filename(filename)

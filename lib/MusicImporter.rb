@@ -12,7 +12,8 @@ class MusicImporter
     dir = Dir.entries("./spec/fixtures/mp3s")
     dir.each do |i| 
       if i.split('').last(4) == '.mp3'.split('')
-        @new << i 
+        @new << i  
+        
       end 
     end 
     @new
@@ -24,6 +25,8 @@ class MusicImporter
     end 
   end 
   
+ 
   
   
 end 
+ 
