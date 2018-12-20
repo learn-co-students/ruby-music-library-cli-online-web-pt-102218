@@ -21,7 +21,8 @@ class Song
   end 
   
   def save 
-    @@all << self 
+    # @@all << self
+    @@all << self if @@all.index {|song| song.name == self.name}.nil?
   end 
   
   def self.destroy_all 
@@ -30,7 +31,7 @@ class Song
   
   def self.create(name)
     new_song = self.new(name)
-    new_song.save 
+    # new_song.save 
     new_song
     # new(name, artist, genre).tap{|s| s.save}
   end 
