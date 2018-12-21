@@ -9,14 +9,14 @@ class MusicImporter
   
   def files
     @new = []
-    dir = Dir.entries("./spec/fixtures/mp3s")
+    dir = Dir.entries(@path)
     dir.each do |i| 
       if i.split('').last(4) == '.mp3'.split('')
         @new << i  
-        
       end 
     end 
     @new
+    
   end 
   
   def import 
