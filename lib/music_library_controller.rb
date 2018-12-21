@@ -25,7 +25,10 @@ class MusicLibraryController
   end
   
   
+  def list_songs
   
+  end
+    
   
   def list_artists
     list = Artist.all.sort_by! { |a| a.name }
@@ -40,5 +43,17 @@ class MusicLibraryController
       puts "#{value}. #{index.name}"
     end
   end
+  
+  def list_songs_by_artist
+    puts "Please enter the name of an artist:"
+    input = gets.chomp
+    if Artist.all.include?!(input)
+      puts "Please enter the name of an artist:"
+    else
+      # list = Song.all.sort_by! { |a| a.name }
+      # new = list.uniq.each.with_index(1) do |index, value|
+      #   puts "#{value}. #{index.name}"
+     end
+   end
   
 end
