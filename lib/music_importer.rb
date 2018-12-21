@@ -8,9 +8,10 @@ class MusicImporter
   end
   
   def files
-    @files = []
     new = Dir.entries(@path).reject { |path| path == "." or path == ".."}
-    
   end
   
+  def import
+    Song.create_from_filename(self.files)
+  end 
 end
