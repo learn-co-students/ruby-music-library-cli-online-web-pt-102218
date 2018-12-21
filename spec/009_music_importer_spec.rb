@@ -25,7 +25,7 @@ describe "MusicImporter" do
       expect(music_importer.files).to include("Action Bronson - Larry Csonka - indie.mp3")
       expect(music_importer.files).to include("Real Estate - Green Aisles - country.mp3")
       expect(music_importer.files).to include("Real Estate - It's Real - hip-hop.mp3")
-      expect(musi  c_importer.files).to include("Thundercat - For Love I Come - dance.mp3")
+      expect(music_importer.files).to include("Thundercat - For Love I Come - dance.mp3")
     end
   end
 end
