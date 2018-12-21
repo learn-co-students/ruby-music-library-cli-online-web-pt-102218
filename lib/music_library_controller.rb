@@ -3,11 +3,9 @@ require 'pry'
 class MusicLibraryController
   attr_accessor :MusicImporter
   
-  @@all = []
-  
   def initialize(path = "./db/mp3s")
     @MusicImporter = MusicImporter.new(path)
-    @@all << @MusicImporter.import
+    @MusicImporter.import 
   end
   
   def call 
@@ -26,12 +24,16 @@ class MusicLibraryController
     gets
   end
   
-  def list_songs
-    unnum_list = @@all
-    counter = 1
-    unnum_list.map do |file|
-      puts "#{counter}. #{file}"
-      counter += 1 
+  
+  
+  
+  def list_artists
+    list = Artist.all.sort_by! { |a| a.name }
+    new = list.uniq.each.with_index(1) do |index, value|
+      puts "#{value}. #{index.name}"
     end
   end
+
+   
+  
 end
