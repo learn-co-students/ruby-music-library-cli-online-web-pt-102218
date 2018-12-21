@@ -34,6 +34,11 @@ class MusicLibraryController
     end
   end
 
-   
+  def list_genres
+    list = Genre.all.sort_by! { |a| a.name }
+    new = list.uniq.each.with_index(1) do |index, value|
+      puts "#{value}. #{index.name}"
+    end
+  end
   
 end
