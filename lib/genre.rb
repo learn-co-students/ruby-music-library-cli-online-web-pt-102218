@@ -1,22 +1,19 @@
  class Genre
+  attr_accessor :name
+  extend Concerns::Findable
+  @@all = []
  
-    attr_accessor :name
-   extend Concerns::Findable
- 
-    @@all = []
- 
-    def initialize(name)
+  def initialize(name)
      @name = name
      @songs = []
    end
- 
-    def songs
+  def songs
      @songs
    end
  
-    def artists
-     @songs.map do |sng|
-       sng.artist
+  def artists
+    @songs.map do |song|
+       song.artist
      end.uniq
    end
  
@@ -24,7 +21,7 @@
      @@all
    end
  
-    def self.destroy_all
+  def self.destroy_all
      @@all.clear
    end
  
