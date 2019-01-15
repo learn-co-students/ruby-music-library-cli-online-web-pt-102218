@@ -57,9 +57,9 @@ describe "Genre" do
     end
   end
 
-  describe "#save" do
+  describe ".save" do
     it "adds the Genre instance to the @@all class variable" do
-      genre.save
+      Genre.save
 
       expect(Genre.all).to include(genre)
     end
