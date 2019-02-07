@@ -1,5 +1,10 @@
+require_relative './concerns/findable.rb'
+require 'pry'
+
 class Song
   attr_accessor :name
+  
+  extend Concerns::Findable
   
   @@all = []
   
@@ -9,7 +14,6 @@ class Song
   
   def initialize(name, artist= nil, genre= nil)
     @name = name
-    @@all << self
     self.artist= artist if artist
     self.genre = genre if genre
   end
@@ -33,12 +37,24 @@ class Song
   end
   
   def save
-    self.class.all << Song.new(name)
+    self.class.all << self
   end
   
+  # def self.create(name)
+  # self.new(name).tap{ |s| s.save }
+  # end
+  
+  # def self.create(name)
+  #   self.new(name).tap do |song|
+  #   song.save
+  #   end
+  # end
+  
   def self.create(name)
-   new(name).tap{ |s| s.save }
-  end
+    song = self.new(name)
+    song.save
+    song
+  end 
   
   def self.find_by_name(name)
     self.all.find {|song| song.name == name}
