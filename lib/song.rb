@@ -67,25 +67,12 @@ class Song
     self.all.clear
   end
   
+ 
+  
 end
 
-
-#   def self.find_or_create_by_name(name)
-#       self.find_by_name(name) || self.create(name)
-#     end
-  
-#   def self.find_by_name(name)
-#       self.all.find{|a| a.name == name}
-#     end
-
- # def self.create(name)
-  # self.new(name).tap{ |s| s.save }
-  # end
-  
   # def self.create(name)
-  #   self.new(name).tap do |song|
-  #   song.save
-  #   end
+  #   s = self.new(name).tap{ |s| s.save }
   # end
-  
+
   
