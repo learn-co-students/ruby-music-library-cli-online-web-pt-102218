@@ -29,7 +29,7 @@ class Artist
   
   def add_song(song)
     @songs << song unless @songs.include?(song)
-    song.artist = self unless song.artist == self
+    song.artist = self unless song.artist
   end 
   
   def genres 
@@ -46,3 +46,12 @@ class Artist
   end
   
 end
+
+#  def self.find_or_create_by_name(name)
+#       self.find_by_name(name) || self.create(name)
+#     end
+  
+#   def self.find_by_name(name)
+#       self.all.find{|a| a.name == name}
+#     end
+
