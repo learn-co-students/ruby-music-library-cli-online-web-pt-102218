@@ -57,9 +57,9 @@ describe "Song" do
     end
   end
 
-  describe "#save" do
+  describe ".save" do
     it "adds the Song instance to the @@all class variable" do
-      song.save
+      Song.save
 
       expect(Song.all).to include(song)
     end
